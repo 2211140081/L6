@@ -8,7 +8,6 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root "top#main"
   get 'top/main'
-  
   resources :products
   resources :cart_items, only: [:new, :create, :destroy]
   resources :carts, only: [:show]
