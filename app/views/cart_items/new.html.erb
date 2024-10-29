@@ -1,0 +1,17 @@
+<h1>カート追加</h1>
+
+<%= form_with model: @cart_item, url: cart_items_path do |f| %>
+    <p>
+        <%= f.label :name, '商品名称' %>：<%= Product.find(params[:product_id]).name %>
+    </p>
+    <p>
+        <%= f.label :price, '商品価格' %>：<%= Product.find(params[:product_id]).price %>円
+    </p>
+    <p>
+        <%= f.label :qty, '数量' %>：<%= f.text_field :qty %>点
+    </p>
+    <%= f.hidden_field :product_id, value: params[:product_id] %>
+    <%= f.submit '商品を登録する' %>
+<% end %>
+
+<p><%= link_to "商品一覧に戻る", root_path %></p>

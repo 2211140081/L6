@@ -1,0 +1,16 @@
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
+
+<h1>カート</h1>
+
+<% all = 0 %>
+<% @cart_items.each do |ci| %>
+  <p>商品<%= ci.id %>（<%= Product.find(ci.product_id).name %>、<%= Product.find(ci.product_id).price %>円、<%= ci.qty %>点）
+  <%= link_to 'カートから削除', cart_item_path(ci), data: {turbo_method: :delete} %></p>
+  <% all += Product.find(ci.product_id).price * ci.qty %>
+<% end %>
+<br>
+<p>合計金額<%= all %>円</p>
+
+<p><%= link_to "商品一覧に戻る", root_path %></p>

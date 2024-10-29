@@ -1,0 +1,14 @@
+<% if flash[:notice] %>
+    <%= flash[:notice] %>
+<% end %>
+
+<h1>商品一覧</h1>
+
+<% @products.each do |pd| %>
+  <p>商品<%= pd.id %>（<%= pd.name %>、<%= pd.price %>円）
+  <%= link_to '削除', product_path(pd), data: {turbo_method: :delete} %>
+  <%= link_to 'カート追加', new_cart_item_path(product_id: pd.id) %></p>
+<% end %>
+
+<p><%= link_to "商品を追加する", new_product_path %></p>
+<p><%= link_to "カートを見る", cart_path(current_cart.id) %></p>

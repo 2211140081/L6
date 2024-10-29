@@ -1,0 +1,15 @@
+<h1>商品追加</h1>
+
+<%= form_with model: @product do |f| %>
+  <p>
+    <%= f.label :name, '商品名称' %>
+    <%= f.text_field :name %>
+  </p>
+  <p>
+    <%= f.label :price, '商品価格' %>
+    <%= f.text_field :price %>円
+  </p>
+  <%= f.submit '追加' %>
+<% end %>
+
+<p><%= link_to "商品一覧に戻る", root_path %></p>
